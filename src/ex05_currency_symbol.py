@@ -11,4 +11,12 @@ def currency_symbol(currency: str) -> str | None:
 
     - No lanza error si la divisa no está.
     """
+    #if currency not in CURRENCIES:
+    #    return None
+    
+    #if currency in CURRENCIES:
+    #    return CURRENCIES[currency]
+    
+    return CURRENCIES.get(currency)
+    
     raise NotImplementedError("Implementa currency_symbol(currency)")

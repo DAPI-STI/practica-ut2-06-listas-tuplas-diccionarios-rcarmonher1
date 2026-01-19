@@ -15,7 +15,12 @@ def best_student(records: list[tuple[str, float]]) -> tuple[str, float]:
     """
     if not records:
         raise ValueError("La lista está vacía.")
-    
-    tupla_nueva = ()
-    
+
+    mejor = records[0]
+    for n in records:
+        if n[1] > mejor[1]:
+            mejor = n
+        
+    return mejor
+
     raise NotImplementedError("Implementa best_student(records)")

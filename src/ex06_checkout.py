@@ -22,4 +22,27 @@ def checkout(cart: list[tuple[str, int]]) -> tuple[dict[str, float], float]:
     [("Pan", 2), ("Huevos", 1), ("Pan", 1)] ->
       ({"Pan": 4.2, "Huevos": 2.3}, 6.5)
     """
+    
+    coste_prod = {}
+    total = 0
+    
+    for prod, cantidad in cart:
+        if cantidad < 0:
+            raise ValueError("Las cantidades no pueden ser negativas")
+          
+        if prod not in PRICES:
+            raise ValueError("El producto no existe en la lista de precios")
+
+        if prod in coste_prod:
+            coste_prod[prod] = coste_prod[prod] + (PRICES[prod] * cantidad)
+            coste_prod[prod] = round(coste_prod[prod], 2)
+            
+        else:
+            coste_prod[prod] = PRICES[prod] * cantidad
+            coste_prod[prod] = round(coste_prod[prod], 2)
+        
+        total = total + (PRICES[prod] * cantidad)
+        
+    return coste_prod, round(total, 2)
+    
     raise NotImplementedError("Implementa checkout(cart)")
